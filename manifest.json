@@ -5,17 +5,17 @@
     {
       "src": "img/farfane.jpg",
       "sizes": "96x96",
-      "type": "image/png"
+      "type": "image/jpg"
     },
     {
       "src": "img/farfane.jpg",
       "sizes": "144x144",
-      "type": "image/png"
+      "type": "image/jpg"
     },
     {
       "src": "img/farfane.jpg",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/jpg"
     }
   ],
   "start_url": "/index.html",
