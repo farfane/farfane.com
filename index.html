@@ -25,5 +25,22 @@
   <body>
     <img class="logo" src="img/farfane.jpg" alt="farfane">
     <p>farfane.com</p>
+    <p><a href="#" id="install">Installer</a></p>
+    <script>
+      var btn = document.getElementById('install');
+      btn.addEventListener("click", function() {
+        var request = window.navigator.mozApps.install('http://farfane.com/manifest.webapp');
+        request.onsuccess = function () {
+          // Enregistre l'objet App qui est renvoyé
+          var appRecord = this.result;
+          alert('Installation réussie !');
+        };
+        request.onerror = function () {
+          // Affiche le nom de l'erreur depuis l'objet DOMError
+          alert('Installation échouée, erreur : ' + this.error.name);
+        };
+      });
+      
+    </script>
   </body>
 </html>
