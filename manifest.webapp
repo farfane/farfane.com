@@ -12,13 +12,5 @@
   },
   "default_locale": "fr",
   "fullscreen": "true",
-  "orientation": [ "portrait-primary" ],
-  "permissions": {
-    "push": {
-      "description": "Required for being updated",  
-    },
-    "alarms": {
-      "description": "Required to schedule notifications"
-    }
-  }
+  "orientation": [ "portrait-primary" ]
 }
