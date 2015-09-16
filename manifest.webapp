@@ -1,0 +1,24 @@
+{
+  "name": "farfane",
+  "description": "farfane.com",
+  "launch_path": "/index.html",
+  "icons": {
+    "512": "/img/farfane.jpg",
+    "128": "/img/farfane.jpg"
+  },
+  "developer": {
+    "name": "farfane",
+    "url": "http://farfane.com"
+  },
+  "default_locale": "fr",
+  "fullscreen": "true",
+  "orientation": [ "portrait-primary" ],
+  "permissions": {
+    "push": {
+      "description": "Required for being updated",  
+    },
+    "alarms": {
+      "description": "Required to schedule notifications"
+    }
+  }
+}
