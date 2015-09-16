@@ -54,7 +54,7 @@
     <script>
       var installBtn = document.getElementById('install');
       var is_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
-      var is_android = navigator.platform.toLowerCase().indexOf("android") > -1;
+      var is_android = navigator.userAgent.toLowerCase().indexOf('android') > -1;
       if (is_firefox && is_android) {
         installBtn.style.display = "block";
         installBtn.addEventListener("click", function() {
