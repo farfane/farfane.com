@@ -7,40 +7,73 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link rel="manifest" href="/manifest.json">
     <style>
-    body {
-      background-color: black;
-      color: white;
-      font-family: 'Open Sans', cursive;
-      text-align: center;
-    }
-    img.logo {
-      display: block;
-      margin: auto;
-      max-width: 469px;
-      width: 100%;
-      height: auto;
-    }
+      body {
+        background-color: black;
+        color: white;
+        font-family: 'Open Sans', cursive;
+        text-align: center;
+      }
+      img.logo {
+        display: block;
+        margin: auto;
+        max-width: 469px;
+        width: 100%;
+        height: auto;
+      }
+      p.welcome {
+        font-size: 150%;
+      }
+      a.btn-install {
+        display: none;
+        padding: 10px;
+        border: thin solid white;
+        color: white;
+      }
+      a.btn-install:hover {
+        color: white;
+        text-decoration: underline;
+      }
+      p.success {
+        display: none;
+        font-style: italic;
+        color: green;
+      }
+      p.error {
+        display: none;
+        font-style: italic;
+        color: red;
+      }
     </style>
   </head>
   <body>
     <img class="logo" src="img/farfane.jpg" alt="farfane">
-    <p>farfane.com</p>
-    <p><a href="#" id="install">Installer</a></p>
+    <p class="welcome">Welcome to farfane.com</p>
+    <a href="#" class="btn-install" id="install">Click here to install</a>
+    <p class="success"></p>
+    <p class="error"></p>
     <script>
-      var btn = document.getElementById('install');
-      btn.addEventListener("click", function() {
-        var request = window.navigator.mozApps.install('http://farfane.com/manifest.webapp');
-        request.onsuccess = function () {
-          // Enregistre l'objet App qui est renvoyé
-          var appRecord = this.result;
-          alert('Installation réussie !');
-        };
-        request.onerror = function () {
-          // Affiche le nom de l'erreur depuis l'objet DOMError
-          alert('Installation échouée, erreur : ' + this.error.name);
-        };
-      });
-      
+      var installBtn = document.getElementById('install');
+      var is_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+      var is_android = navigator.platform.toLowerCase().indexOf("android") > -1;
+      if (is_firefox && is_android) {
+        installBtn.style.display = "block";
+        installBtn.addEventListener("click", function() {
+          var request = window.navigator.mozApps.install('http://farfane.com/manifest.webapp');
+          request.onsuccess = function () {
+            var appRecord = this.result;
+            var success = document.getElementById('success');
+            success.style.display = 'block';
+            success.innerHTML = 'Installation réussie !';
+            installBtn.style.display = 'none';
+          };
+          request.onerror = function () {
+            var error = document.getElementById('error');
+            error.style.display = 'block';
+            error.innerHTML = 'Installation échouée, erreur : ' + this.error.name;
+            installBtn.style.display = 'none';
+          };
+        });
+      }
     </script>
   </body>
 </html>
